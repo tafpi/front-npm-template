@@ -1,0 +1,1 @@
+a very basic template for npm scss and js compilation

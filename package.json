@@ -1,0 +1,30 @@
+{
+	"name": "npm",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"sass": "node-sass --watch src -o dist",
+		"clean": "rimraf dist",
+		"compile-dev": "node-sass --output-style=expanded --source-map=true src/scss/style.scss dist/css/style.css",
+		"compile": "node-sass --output-style=expanded --source-map=true src/scss/style.scss dist/css/style.css",
+		"prefix": "postcss dist/css/style.css --use=autoprefixer --map=false --output=dist/css/style.css",
+		"minify": "cleancss --level=1 --source-map --source-map-inline-sources --output dist/css/style.min.css dist/css/style.css",
+		"copy-to-root": "copyfiles -f dist/css/style.css ../css/",
+		"copy-min-to-root": "copyfiles -f dist/css/style.min.css ../css/",
+		"dev": "npm run compile-dev -- --watch",
+		"prod": "npm run clean && npm run compile && npm run prefix && npm run minify && npm run copy-min-to-root"
+	},
+	"browserslist": [
+		"last 2 versions"
+	],
+	"author": "tafpi",
+	"license": "ISC",
+	"devDependencies": {
+		"autoprefixer": "^9.4.10",
+		"clean-css-cli": "^4.2.1",
+		"node-sass": "^4.11.0",
+		"postcss-cli": "^6.1.2",
+		"copyfiles": "^2.1.0"
+	}
+}
