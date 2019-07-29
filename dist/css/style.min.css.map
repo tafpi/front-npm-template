@@ -1,0 +1,1 @@
+{"version":3,"sources":["..\\..\\src\\scss\\style.scss"],"names":[],"mappings":"AAAA,IACI,kBAAA,gBAAA,UAAA,gBACA,MAAA","sourcesContent":["img{\r\n    transform: translate(30px);\r\n    color: blue;\r\n}"]}

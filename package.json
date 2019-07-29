@@ -4,16 +4,20 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"sass": "node-sass --watch src -o dist",
-		"clean": "rimraf dist",
-		"compile-dev": "node-sass --output-style=expanded --source-map=true src/scss/style.scss dist/css/style.css",
-		"compile": "node-sass --output-style=expanded --source-map=true src/scss/style.scss dist/css/style.css",
-		"prefix": "postcss dist/css/style.css --use=autoprefixer --map=false --output=dist/css/style.css",
-		"minify": "cleancss --level=1 --source-map --source-map-inline-sources --output dist/css/style.min.css dist/css/style.css",
-		"copy-to-root": "copyfiles -f dist/css/style.css ../css/",
-		"copy-min-to-root": "copyfiles -f dist/css/style.min.css ../css/",
-		"dev": "npm run compile-dev -- --watch",
-		"prod": "npm run clean && npm run compile && npm run prefix && npm run minify && npm run copy-min-to-root"
+		"css-dev": "npm run css-compile -- --watch",
+		"css-prod": "npm run css-clean && npm run css-compile && npm run css-prefix && npm run css-minify && npm run css-copy-min-to-root",
+		"css-compile": "node-sass --output-style=expanded --source-map=true src/scss/style.scss dist/css/style.css",
+		"css-prefix": "postcss dist/css/style.css --use=autoprefixer --map=false --output=dist/css/style.css",
+		"css-minify": "cleancss --level=1 --source-map --source-map-inline-sources --output dist/css/style.min.css dist/css/style.css",
+		"css-copy-to-root": "copyfiles -f dist/css/style.css ../css/",
+		"css-copy-min-to-root": "copyfiles -f dist/css/style.min.css ../css/",
+		"css-clean": "rimraf dist/css",
+		"js-dev": "",
+		"js-prod": "npm run js-clean && npm run js-compile && npm run js-minify",
+		"js-compile": "babel src/js/script.js --out-file dist/js/script-compiled.js",
+		"js-minify": "uglifyjs dist/js/script-compiled.js -m -c drop_console --output dist/js/script.min.js",
+		"js-clean": "rimraf dist/js/*",
+		"copy-to-asset-folders": "copyfiles -f dist/css/style.css ../css/"
 	},
 	"browserslist": [
 		"last 2 versions"
@@ -21,10 +25,15 @@
 	"author": "tafpi",
 	"license": "ISC",
 	"devDependencies": {
+		"@babel/cli": "^7.5.5",
+		"@babel/core": "^7.5.5",
+		"@babel/preset-env": "^7.5.5",
 		"autoprefixer": "^9.4.10",
 		"clean-css-cli": "^4.2.1",
+		"copyfiles": "^2.1.0",
 		"node-sass": "^4.11.0",
 		"postcss-cli": "^6.1.2",
-		"copyfiles": "^2.1.0"
-	}
+		"uglify-js": "^3.6.0"
+	},
+	"dependencies": {}
 }
