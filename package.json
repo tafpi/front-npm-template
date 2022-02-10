@@ -31,7 +31,7 @@
 		"autoprefixer": "^9.4.10",
 		"clean-css-cli": "^4.2.1",
 		"copyfiles": "^2.1.0",
-		"node-sass": "^4.11.0",
+		"node-sass": "^7.0.0",
 		"postcss-cli": "^6.1.2",
 		"uglify-js": "^3.6.0"
 	},
